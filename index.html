@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion Club - Where Innovation Meets Passion!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/4ddce4f42b.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#FFA630',
+                        accent: '#FFE045',
+                        success: '#4CB944',
+                        info: '#17a2b8',
+                        warning: '#FFC107',
+                    },
+                    backgroundImage: {
+                        'gradient-orange': 'linear-gradient(to right, #FF6B35, #FFA630)',
+                        'gradient-orange-light': 'linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.9))',
+                    }
+                }
+            }
+        }
+    </script> -->
+    <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-['Montserrat'] bg-gradient-to-r from-black via-orange-950 to-black min-h-screen">
+
+
+    <!-- Notification Bar -->
+    <div id="notificationBar" class="bg-gradient-orange text-white px-5 py-2.5 flex justify-between items-center relative animate-slide-down hidden">
+        <span id="notificationText">New event added: Welcome to Fusion Club!</span>
+        <button id="notificationClose" class="text-white text-xl">&times;</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="py-4 px-8 flex justify-between items-center sticky top-0 z-50 bg-orange-900/10 bg-blurred backdrop-blur-md rounded-lg  transition-all duration-300">
+        <div class="flex items-center gap-2.5">
+            <img src="./logo.png" alt="Fusion Club Logo" class="h-10">
+
+        </div>
+
+        <!-- Mobile Toggle Button -->
+        <button id="menuToggle" class="md:hidden text-white text-2xl focus:outline-none">
+            &#9776;
+        </button>
+
+        <div class="hidden md:flex items-center gap-5" id="navMenu">
+            <a href="#" id="homeLink" class="text-white font-medium px-2.5 py-1 rounded hover:bg-gradient-orange hover:text-white transition">Home</a>
+            <a href="#" id="eventsLink" class="text-white font-medium px-2.5 py-1 rounded hover:bg-gradient-orange hover:text-white transition">Events</a>
+            <a href="#" id="adminLink" class="admin-link hidden text-white font-medium px-2.5 py-1 rounded hover:bg-gradient-orange hover:text-white transition">Admin Dashboard</a>
+            <div class="auth-buttons flex gap-2.5" id="authButtons">
+                <button id="loginBtnNav" class="px-4 py-2 border-2 border-orange-500 text-orange-500 font-medium rounded-lg hover:bg-orange-500 hover:text-white transition">Login</button>
+                <button id="signupBtnNav" class="px-4 py-2 bg-gradient-orange text-white font-medium rounded-lg hover:opacity-90 transition">Sign Up</button>
+            </div>
+            <div class="user-info hidden items-center gap-2.5" id="userInfo">
+                <span id="usernameDisplay" class="font-medium text-white"></span>
+                <button id="logoutBtn" class="px-4 py-2 bg-orange-500 rounded-full text-white font-medium hover:bg-transparent hover:text-orange-500 transition">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container  max-w-6xl mx-auto px-5 my-8">
+        <!-- Home Page -->
+        <div id="homePage">
+            <!-- Hero Section -->
+            <section class="hero md:mb-0 mb-[100px] flex flex-col mb-10 md:flex-row items-center justify-between py-16 bg-cover bg-center bg-opacity-50 bg-blend-overlay rounded-xl mb-8 h-[70vh] px-8">
+                <!-- Left Content -->
+                <div class="text-left md:w-1/2">
+                    <div class="text-orange-500 bg-white/20 w-[100px] py-1 flex items-center justify-center font-medium mb-4">Welcome</div>
+                    <h1 class="md:text-6xl text-4xl font-bold text-white mb-2">The Fusion Club</h1>
+                    <p class="text-lg text-zinc-300 max-w-lg mb-12">
+                        Where innovation, creativity, and technology come together to build the future!
+                    </p>
+                </div>
+
+                <!-- Right Image -->
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="./skull.png" alt="Fusion Club" class="w-3/4 max-w-xs md:w-[80%] md:max-w-md w-[250px] rounded-lg">
+                </div>
+
+            </section>
+
+
+            <!-- Events Section -->
+            <section class="events-section mt-24">
+                <h2 class="section-title text-3xl font-bold text-white mb-12 text-center relative">
+                    Explore Events
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8" id="homeEventsGrid">
+                    <!-- Event cards: converting to dark theme while maintaining structure -->
+                    <div class="event-card  rounded-lg overflow-hidden shadow-lg">
+                        <div class=" h-48 bg-zinc-700 flex items-center justify-center">
+                            <span class="text-2xl text-orange-500 font-bold">Fusion-X AI Battle</span>
+                        </div>
+                        <div class="event-info p-5">
+                            <p class="text-sm text-zinc-400 mb-3">This is Gonna Be the Ultimate AI Battle For you all</p>
+                            <button class="px-4 py-2 bg-orange-500 text-white rounded-full text-sm font-medium hover:bg-orange-600 transition">Register Now</button>
+                        </div>
+                    </div>
+
+                    <div class="event-card bg-zinc-800 rounded-lg overflow-hidden shadow-lg">
+                        <div class="event-image h-48 bg-zinc-700 flex items-center justify-center">
+                            <span class="text-2xl text-orange-500 font-bold">Fusion-X AI Battle</span>
+                        </div>
+                        <div class="event-info p-5">
+                            <p class="text-sm text-zinc-400 mb-3">This is Gonna Be the Ultimate AI Battle For you all</p>
+                            <button class="px-4 py-2 bg-orange-500 text-white rounded-full text-sm font-medium hover:bg-orange-600 transition">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <button class="px-5 py-2  text-white rounded-full text-sm font-medium hover:bg-orange-600 transition">See More &rsaquo;</button>
+                </div>
+            </section>
+
+            <section class="about mt-[150px] mb-[150px] flex flex-col items-center text-center py-16 rounded-xl mb-8 h-auto px-8">
+                <div class="md:w-3/4">
+                    <h2 class="text-4xl font-bold text-white mb-4">About Us</h2>
+                    <p class="text-lg text-zinc-300 mb-6">
+                        The Fusion Club is a dynamic community where innovation, creativity, and technology collide to shape the future. We bring together passionate minds from diverse fields to collaborate, learn, and build groundbreaking projects.
+                    </p>
+                    <p class="text-lg text-zinc-300">
+                        Whether you're a coder, designer, or an innovator, Fusion Club is the place to connect, grow, and push boundaries!
+                    </p>
+                </div>
+            </section>
+
+
+
+            <!-- Footer -->
+            <footer class="mt-24 text-center pb-8">
+                <p class="text-orange-500 font-medium mb-4">@FusionClub</p>
+                <div class="flex justify-center gap-6">
+                    <a href="https://facebook.com" target="_blank" class="text-zinc-300 hover:text-white transition">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="text-zinc-300 hover:text-white transition">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="text-zinc-300 hover:text-white transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="text-zinc-300 hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-2xl"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="text-zinc-300 hover:text-white transition">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                </div>
+            </footer>
+
+
+            </footer>
+
+        </div>
+
+        <!-- Events Page -->
+        <div id="eventsPage" class="hidden">
+            <h2 class="section-title text-2xl font-bold text-white mb-8 text-center relative">
+                All Events
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-orange rounded-full mt-2.5"></span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-2.5 mb-8">
+                <input type="text" id="searchEvent" placeholder="Search events..." class="px-4 py-2 border border-zinc-700 bg-orange-800/20 text-white rounded-lg flex-grow">
+                <select id="filterCategory" class="px-4 py-2 border border-zinc-700 bg-orange-800/30 text-white rounded-lg">
+                    <option value="">All Categories</option>
+                    <option value="Tech">Tech</option>
+                    <option value="Design">Design</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Workshop">Workshop</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="eventsGrid">
+                <!-- Events will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="hidden">
+            <h2 class="section-title text-2xl font-bold text-white mb-8 text-center relative">
+                Admin Dashboard
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-orange rounded-full mt-2.5"></span>
+            </h2>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                <div class="stat-card bg-zinc-200/15 rounded-xl shadow-md p-6 text-center">
+                    <h3 class="text-lg font-semibold text-orange-500 mb-2">Total Events</h3>
+                    <p class="text-4xl font-bold text-white" id="totalEvents">0</p>
+                </div>
+                <div class="stat-card bg-zinc-200/15 rounded-xl shadow-md p-6 text-center">
+                    <h3 class="text-lg font-semibold text-orange-500 mb-2">Upcoming Events</h3>
+                    <p class="text-4xl font-bold text-white" id="upcomingEvents">0</p>
+                </div>
+                <div class="stat-card bg-zinc-200/15 rounded-xl shadow-md p-6 text-center">
+                    <h3 class="text-lg font-semibold text-orange-500 mb-2">Total Registrations</h3>
+                    <p class="text-4xl font-bold text-white" id="totalRegistrations">0</p>
+                </div>
+                <div class="stat-card bg-zinc-200/15 rounded-xl shadow-md p-6 text-center">
+                    <h3 class="text-lg font-semibold text-orange-500 mb-2">Active Users</h3>
+                    <p class="text-4xl font-bold text-white" id="activeUsers">0</p>
+                </div>
+            </div>
+
+            <!-- Add Event Form -->
+            <div class="add-event-form text-white bg-zinc-200/15 rounded-xl shadow-md p-8 mb-8">
+                <h3 class="text-xl font-bold text-orange-500 mb-6">Add New Event</h3>
+                <div class="form-group mb-6">
+                    <label for="eventName" class="block text-zinc-300/40 font-medium mb-2">Event Name</label>
+                    <input type="text" id="eventName" placeholder="Enter event name" class="w-full px-4 py-2 border border-zinc-700/20 bg-zinc-900/30 text-white rounded-lg">
+                </div>
+                <div class="form-group mb-6">
+                    <label for="eventDate" class="block text-zinc-300/30 font-medium mb-2">Event Date</label>
+                    <input type="date" id="eventDate" class="w-full px-4 py-2 border border-zinc-700/20 bg-zinc-900/30 text-white rounded-lg">
+                </div>
+                <div class="form-group mb-6">
+                    <label for="eventCategory" class="block text-zinc-300/30 font-medium mb-2">Category</label>
+                    <select id="eventCategory" class="w-full px-4 py-2 border border-zinc-700/30 bg-zinc-900/30 text-white rounded-lg">
+                        <option value="Tech">Tech</option>
+                        <option value="Design">Design</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Workshop">Workshop</option>
+                    </select>
+                </div>
+                <div class="form-group mb-6">
+                    <label for="eventDescription" class="blocktext-white font-medium mb-2">Description</label>
+                    <textarea id="eventDescription" placeholder="Enter event description" class="w-full px-4 py-2 border border-zinc-700/20 bg-zinc-900/30 text-white rounded-lg min-h-[100px]"></textarea>
+                </div>
+                <button id="addEventBtn" class="w-full px-5 py-2.5 bg-gradient-orange text-white font-medium rounded-lg hover:opacity-90 transition hover:-translate-y-0.5 hover:shadow-md">
+                    Add Event
+                </button>
+            </div>
+
+            <!-- Admin Events List -->
+            <h3 class="section-title text-xl font-bold text-white mb-8 text-center relative">
+                Manage Events
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-orange rounded-full mt-2.5"></span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="adminEventsGrid">
+                <!-- Admin events will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Popup -->
+    <div id="eventPopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-zinc-900 rounded-xl w-[90%] max-w-4xl max-h-[90vh] overflow-y-auto p-8 transform translate-y-5 transition-all duration-300">
+            <button id="popupClose" class="absolute top-4 right-4 text-orange-500 text-2xl">&times;</button>
+            <div id="popupImage" class="h-48 bg-gradient-orange rounded-xl mb-6 flex items-center justify-center text-white text-2xl font-bold">
+                <!-- Event image or category -->
+            </div>
+            <div class="popup-content">
+                <h2 id="popupTitle" class="text-2xl font-bold text-orange-500 mb-2">Event Title</h2>
+                <div class="popup-meta flex gap-4 mb-6 flex-wrap text-zinc-300">
+                    <div class="flex items-center gap-1.5"><span>📅</span> <span id="popupDate">Date</span></div>
+                    <div class="flex items-center gap-1.5"><span>🏷️</span> <span id="popupCategory">Category</span></div>
+                    <div class="flex items-center gap-1.5"><span>👥</span> <span id="popupRegistrations">0</span> registrations</div>
+                </div>
+                <div id="popupDescription" class="mb-8 text-zinc-300">
+                    Event description goes here...
+                </div>
+                <div class="popup-register flex justify-between items-center gap-2.5 flex-wrap">
+                    <div id="popupRegCount" class="bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-full text-sm">
+                        <span id="popupRegNumber">0</span> people registered
+                    </div>
+                    <button id="popupRegisterBtn" class="px-5 py-2 bg-gradient-orange text-white font-medium rounded-lg hover:opacity-90 transition">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-zinc-900 rounded-xl w-[90%] max-w-md p-8 transform translate-y-5 transition-all duration-300">
+            <button id="loginClose" class="absolute top-4 right-4 text-orange-500 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold text-orange-500 mb-6 text-center">Login</h2>
+            <div class="form-group mb-6">
+                <label for="loginEmail" class="block text-zinc-300 font-medium mb-2">Email</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <div class="form-group mb-6">
+                <label for="loginPassword" class="block text-zinc-300 font-medium mb-2">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <button id="loginSubmit" class="w-full px-5 py-2.5 bg-gradient-orange text-white font-medium rounded-lg hover:opacity-90 transition">
+                Login
+            </button>
+            <div class="form-footer text-center mt-6 text-zinc-300">
+                Don't have an account? <a href="#" id="showSignup" class="text-orange-500 font-medium hover:underline">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-zinc-900 rounded-xl w-[90%] max-w-md p-8 transform translate-y-5 transition-all duration-300">
+            <button id="signupClose" class="absolute top-4 right-4 text-orange-500 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold text-orange-500 mb-6 text-center">Sign Up</h2>
+            <div class="form-group mb-6">
+                <label for="signupName" class="block text-zinc-300 font-medium mb-2">Full Name</label>
+                <input type="text" id="signupName" placeholder="Enter your full name" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <div class="form-group mb-6">
+                <label for="signupEmail" class="block text-zinc-300 font-medium mb-2">Email</label>
+                <input type="email" id="signupEmail" placeholder="Enter your email" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <div class="form-group mb-6">
+                <label for="signupPassword" class="block text-zinc-300 font-medium mb-2">Password</label>
+                <input type="password" id="signupPassword" placeholder="Create a password" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <div class="form-group mb-6">
+                <label for="signupConfirm" class="block text-zinc-300 font-medium mb-2">Confirm Password</label>
+                <input type="password" id="signupConfirm" placeholder="Confirm your password" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <div class="form-group checkbox mb-6 flex items-center gap-2.5">
+                <input type="checkbox" id="isAdminSignup" class="w-5 h-5">
+                <label for="isAdminSignup" class="text-zinc-300">Register as Admin (requires admin code)</label>
+            </div>
+            <div class="form-group mb-6 hidden" id="adminCodeGroup">
+                <label for="adminCode" class="block text-zinc-300 font-medium mb-2">Admin Code</label>
+                <input type="password" id="adminCode" placeholder="Enter admin code" class="w-full px-4 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-lg">
+            </div>
+            <button id="signupSubmit" class="w-full px-5 py-2.5 bg-gradient-orange text-white font-medium rounded-lg hover:opacity-90 transition">
+                Sign Up
+            </button>
+            <div class="form-footer text-center mt-6 text-zinc-300">
+                Already have an account? <a href="#" id="showLogin" class="text-orange-500 font-medium hover:underline">Login</a>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+<!-- JavaScript -->
+
+<script>
+</script>
+
+</html>
+<!-- localStorage.setItem('adminCode', 'fusion2023'); -->
+
+<!-- const defaultUsers = [
+{
+    id: 1,
+    name: 'Admin User',
+    email: 'admin@fusionclub.com',
+    password: 'admin123', // In real app, this should be hashed
+    isAdmin: true,
+    registeredEvents: []
+}
+];
+localStorage.setItem('users', JSON.stringify(defaultUsers)); -->
